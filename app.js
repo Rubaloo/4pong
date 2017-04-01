@@ -1,3 +1,5 @@
+/** The server side app to run on node. This handles all the node/express/socket.io set up and code. */
+
 var app = require('express')();
   serveStatic = require('serve-static'),
   server = require('http').createServer(app),
@@ -47,37 +49,3 @@ function setupRouting() {
 }
 
 setupServer();
-
-
-/**GAME FUNCTIONS*/
-
-var ball;
-var inputs = [];
-var game;
-var keys = {up:'w', down:'s', left:'a', right:'d'};
-
-function initGame() {
-  ball = {x : 300, y : 300}; 
-  game = {'ball' : ball};
-  broadcastToClients('initGame', game);
-}
-
-function processInputs(input) {
- 
-}
-
-function updatePhyshics(input) {
-  if(input.command === keys.left) --game.ball.x;
-  else if(input.command === keys.up) --game.ball.y;
-  else if(input.command === keys.right) ++game.ball.x;
-  else if(input.command === keys.down) ++game.ball.y;
-}
-
-function updateClientState(game) {
-  broadcastToClients('updateGame', game);
-}
-
-function broadcastToClients(eventName ,data) {
-  console.log('broadcastToClients: ' + eventName);
-  io.sockets.emit(eventName, data);
-}
