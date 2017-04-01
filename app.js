@@ -1,6 +1,9 @@
 var app = require('express')();
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
+  serveStatic = require('serve-static'),
+  server = require('http').createServer(app),
+  io = require('socket.io')(server),
+  path = require('path');
+
 
 io.on('connection', function(client){ 
   console.log('Server: client connected');
@@ -11,8 +14,13 @@ io.on('connection', function(client){
   client.emit('event', { id : 'client connected: ' + client.id });
 });
 
-app.get('/', function (req, res) {
+app.use(serveStatic(path.join(__dirname, '/node_modules/pixi.js/dist/'), {'index': 'pixi.min.js'}));
+
+app.get('/game', function (req, res) {
   res.sendFile(__dirname + '/src/init.html');
 });
  
+
+
+
 server.listen(4000);
