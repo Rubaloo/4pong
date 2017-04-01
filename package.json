@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/Rubaloo/4pong/issues"
   },
-  "homepage": "https://github.com/Rubaloo/4pong"
+  "homepage": "https://github.com/Rubaloo/4pong",
+  "dependencies": {}
 }
