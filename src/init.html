@@ -57,6 +57,7 @@
             {
                 var c = document.getElementById("myCanvas");
                 var ctx = c.getContext("2d");
+                ctx.clearRect(0, 0, c.width, c.height);                
                 ctx.beginPath();
                 ctx.arc(ball.x, ball.y, 10, 2 * Math.PI, false);
                 ctx.fillStyle = 'black';
