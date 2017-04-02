@@ -3,11 +3,14 @@
 var app = require('express')();
   serveStatic = require('serve-static'),
   server = require('http').createServer(app),
-  io = require('socket.io')(server),
+  gameNetIO = require('src/core/gameNetIO.js')
+
   path = require('path');
 
 
 /*** SERVER SETUP */
+
+var gameNetIO = undefined;
 function setupServer() {
   setupIO();
   setupExportResources();
@@ -17,24 +20,7 @@ function setupServer() {
 }
 
 function setupIO() {
-  io.on('connection', function(client){ 
-    console.log('Server: client connected');
-    
-    client.on('disconnect', function(){
-      console.log('Server: client disconected');
-    });
-
-    client.on('input', function(input){
-      //inputs.push(input);
-      //processInputs(input);
-      updatePhyshics(input);
-      updateClientState(game);
-    });
-
-    initGame();
-    client.emit('event', { id : 'client connected: ' + client.id });
-
-  });
+  serverNetIO = new serverNetIO(server);  
 }
 
 function setupExportResources () {
