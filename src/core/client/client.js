@@ -19,8 +19,6 @@ keyboardJS.on(keys.left, function() {
     sendInput({command : keys.left});
 });
 
-
-
 function drawBall(ball) 
 {
     var c = document.getElementById("myCanvas");

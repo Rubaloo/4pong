@@ -3,17 +3,11 @@
 
 class GameWorld {
   constructor() {
-    this.ball = undefined; 
+    this.ball = undefined;
+    this.inputs = [];
+    this.players = []; 
   }
 
-  server_initGame() {
-    this.ball = {x : 300, y : 300}; 
-    return this;
-  };
-
-  client_initGame(ball) {
-    this.ball = ball;
-    return this;
-  };
+  initGame(){};
 }
 

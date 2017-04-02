@@ -1,32 +1,31 @@
 /** The logic for the game play itself, both server and client. */
+ var Emitter = require('emitter');
 
-/** handles inputs and outputs */
-/**GAME CORE*/
-var Emitter = require('emitter');
+class GameCore {
+  
+  /** handles inputs and outputs */
+  constructor(gameNetIO, gameWorld) {
+    this.gameNetIO = gameNetIO;
+    this.gameWorld = gameWorld;
+    this.keys = {up:'w', down:'s', left:'a', right:'d'};
+  }
 
-var inputs = [];
-var players = [];
-var ball;
-var plates;
-var game;
+  /**GAME CORE */
 
-var keys = {up:'w', down:'s', left:'a', right:'d'};
+  client_processInputs(input) {
 
-/**GAME CORE */
+  }
 
-function client_processInputs(input) {
+  server_processInputs(input) {
+  
+  }
 
-}
-
-function server_processInputs(input) {
- 
-}
-
-function updatePhyshics(input) {
-  if(input.command === keys.left) --game.ball.x;
-  else if(input.command === keys.up) --game.ball.y;
-  else if(input.command === keys.right) ++game.ball.x;
-  else if(input.command === keys.down) ++game.ball.y;
+  updatePhyshics(input) {
+    if(input.command === keys.left) --game.ball.x;
+    else if(input.command === keys.up) --game.ball.y;
+    else if(input.command === keys.right) ++game.ball.x;
+    else if(input.command === keys.down) ++game.ball.y;
+  }
 }
 
 /** IO */

@@ -1,7 +1,8 @@
 var io = require('socket.io');
 var Emitter = require('emitter');
+var GameNetIO = require('../gameNetIO.js');
 
-class ClientNetIO {
+class ClientNetIO extends GameNetIO {
     constructor(serverUrl) {
         this.socket = io(serverUrl || 'http://localhost:4000');
         this.emiter = Emitter(this);

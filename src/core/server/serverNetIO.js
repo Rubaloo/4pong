@@ -1,4 +1,6 @@
-class ServerNetIO {
+var GameNetIO = require('../gameNetIO.js');
+
+class ServerNetIO extends GameNetIO {
     constructor(server) {
         this.server = server;
         this.io = require('socket.io')(server);

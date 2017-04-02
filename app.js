@@ -3,25 +3,31 @@
 var app = require('express')();
   serveStatic = require('serve-static'),
   server = require('http').createServer(app),
-  gameNetIO = require('src/core/gameNetIO.js')
+  ServerNetIO = require('./src/core/server/serverNetIO.js'),
+  ServerWorld = require('./src/core/server/serverWorld.js'),
+  GameCore = require('./src/core/gameCore.js');
+
 
   path = require('path');
 
 
 /*** SERVER SETUP */
 
-var gameNetIO = undefined;
+var serverNetIO = undefined;
+var gameCore = undefined;
+var serverWorld = undefined;
+
 function setupServer() {
-  setupIO();
+  serverNetIO = new ServerNetIO(server);  
+  serverWorld = new ServerWorld(ball);
+  gameCore = new GameCore(serverNetIO, serverWorld);
+  
   setupExportResources();
   setupRouting();
 
   server.listen(4000);
 }
 
-function setupIO() {
-  serverNetIO = new serverNetIO(server);  
-}
 
 function setupExportResources () {
   app.use(serveStatic(path.join(__dirname, '/node_modules/pixi.js/dist/'), {'index': 'pixi.min.js'}));

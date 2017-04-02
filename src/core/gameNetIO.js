@@ -1,0 +1,3 @@
+class GameNetIO {
+    constructor(){};
+}
