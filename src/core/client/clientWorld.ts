@@ -1,8 +1,11 @@
 'use strict';
+import GameWorld = require('../gameWorld');
 
-class ServerWorld extends GameWorld {
-  constructor() {
+class ClientWorld extends GameWorld {
+  constructor(ball) {
     super();
     this.ball = ball;
   };
-}
+};
+
+export = ClientWorld;

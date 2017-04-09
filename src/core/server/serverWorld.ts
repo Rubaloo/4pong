@@ -1,4 +1,5 @@
 'use strict';
+import GameWorld = require('../gameWorld');
 
 class ServerWorld extends GameWorld {
   constructor() {
@@ -6,4 +7,6 @@ class ServerWorld extends GameWorld {
     this.ball = {x : 300, y : 300}; 
   };
 }
+
+export = ServerWorld;
 

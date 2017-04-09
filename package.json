@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "rimraf ./build && tsc"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,14 @@
     "url": "https://github.com/Rubaloo/4pong/issues"
   },
   "homepage": "https://github.com/Rubaloo/4pong",
-  "dependencies": {}
+  "dependencies": {
+    "@types/keyboardjs": "^2.2.30",
+    "@types/lodash": "^4.14.61",
+    "socket.io": "^1.7.3"
+  },
+  "devDependencies": {
+    "@types/node": "^7.0.12",
+    "emitter": "0.0.5",
+    "path": "^0.12.7"
+  }
 }
